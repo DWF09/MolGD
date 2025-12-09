@@ -31,7 +31,7 @@ CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_uncond.py --m
 CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_geom_uncond.py --mode train --workdir exp_uncond/vpsde_geom --config.training.n_iters 2500000 --config.model.n_layers 8
 
 #sample
-python main.py --config configs/vpsde_geom_uncond.py --mode eval --workdir exp_uncond/vpsde_geom --config.eval.ckpts your_checkpoints --config.eval.batch_size 1000 --config.sampling.steps 1000 --config.model.n_layers 8 --config.seed 42
+CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_geom_uncond.py --mode eval --workdir exp_uncond/vpsde_geom --config.eval.ckpts your_checkpoints --config.eval.batch_size 1000 --config.sampling.steps 1000 --config.model.n_layers 8 --config.seed 42
 ```
 
 ## Conditional Generation
