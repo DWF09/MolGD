@@ -1,4 +1,3 @@
-#MolGD
 ## Environment
 
 conda environment reference `requirements.txt` file.
@@ -94,5 +93,4 @@ CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_cond_RL_multi
 #sample
 CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_cond_RL_multi.py --mode eval --workdir exp_cond_RL/vpsde_qm9_cond_RL_multi --config.eval.ckpts 48000 --config.eval.batch_size 2500 --config.sampling.steps 1000
 ```
-
 
