@@ -8,7 +8,7 @@ The data preparation follows [JODO](https://github.com/GRAPH-0/JODO?tab=readme-o
 
 ## Pretrained MolGD
 
-Download the pretrained model checkpoint of IPDiff from [pretrained-MolGD](https://zenodo.org/records/17861895)
+Download the pretrained model checkpoint of MolGD from [pretrained-MolGD](https://zenodo.org/records/17861895)
 
 ## Unconditional Generation
 
