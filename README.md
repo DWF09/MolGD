@@ -94,3 +94,24 @@ CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_cond_RL_multi
 CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_cond_RL_multi.py --mode eval --workdir exp_cond_RL/vpsde_qm9_cond_RL_multi --config.eval.ckpts 48000 --config.eval.batch_size 2500 --config.sampling.steps 1000
 ```
 
+## Unconditional generation + Drug-likeness optimisation 
+
+1.Optimise QED/SA
+
+```bash
+#Optimised training
+CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_uncond_RL.py --mode train --workdir exp_uncond_RL/vpsde_qm9_RL_qed --config.RL_type "qed" --config.new_train_set 10000 --config.training.eval_batch_size 1000 --config.training.eval_samples 1000 --config.training.snapshot_freq 1000
+```
+
+- Prior to training, we must place the model trained in the **unconditional generation** experiment into the path `exp_uncond_RL/vpsde_qm9_qed/checkpoints-meta/your_checkpoints`. Subsequently, we shall train upon this pre-trained model.
+- As this experiment is solely intended to compare optimisation efficiency during training, sampling is not performed.
+- When optimising SA, simply replace all instances of ‘qed’ in the three instructions with ‘sa’.
+
+2.Optimise QED&SA
+
+```bash
+CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_uncond_RL.py --mode train --workdir exp_uncond_RL/vpsde_qm9_RL_multi --config.RL_type "multi" --config.new_train_set 10000 --config.training.eval_batch_size 1000 --config.training.eval_samples 1000 --config.training.snapshot_freq 1000
+```
+
+- Prior to training, we must place the model trained in the **unconditional generation** experiment into the path `exp_uncond_RL/vpsde_qm9_multi/checkpoints-meta/your_checkpoints`. Subsequently, we shall train upon this pre-trained model.
+- As this experiment is solely intended to compare optimisation efficiency during training, sampling is not performed.
