@@ -72,10 +72,10 @@ CUDA_VISIBLE_DEVICES=0 python main.py --config configs/vpsde_qm9_cond_multi.py -
 CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_cond_RL.py --mode train --workdir exp_cond_RL/vpsde_qm9_cond_RL_qed --config.RL_type "qed" --config.training.n_iters 400000
 
 #Optimised training
-CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_cond_RL.py --mode train --workdir exp_cond_RL/vpsde_qm9_cond_RL_qed --config.RL_type "qed" --config.new_train_set 10000 --config.cond_RL True --config.training.eval_batch_size 1000 --config.training.eval_samples 1000 --config.training.snapshot_freq 1000 --config.training.n_iters 480000
+CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_cond_RL.py --mode train --workdir exp_cond_RL/vpsde_qm9_cond_RL_qed --config.RL_type "qed" --config.new_train_set 10000 --config.cond_RL True --config.training.eval_batch_size 1000 --config.training.eval_samples 1000 --config.training.snapshot_freq 1000 --config.training.n_iters 600000
 
 #sample
-CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_cond_RL.py --mode eval --workdir exp_cond_RL/vpsde_qm9_cond_RL_qed --config.eval.ckpts 480000 --config.eval.batch_size 2500 --config.sampling.steps 1000
+CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_cond_RL.py --mode eval --workdir exp_cond_RL/vpsde_qm9_cond_RL_qed --config.eval.ckpts your_checkpoints --config.eval.batch_size 2500 --config.sampling.steps 1000
 ```
 
 - First, conduct QED conditional training to enable the model to occasionally generate molecules with specified QED values. Subsequently, perform optimisation training on the trained conditional model.
@@ -88,10 +88,10 @@ CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_cond_RL.py --
 CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_cond_RL_multi.py --mode train --workdir exp_cond_RL/vpsde_qm9_cond_RL_multi --config.RL_type "multi" --config.training.n_iters 400000
 
 #Optimised training
-CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_cond_RL_multi.py --mode train --workdir exp_cond_RL/vpsde_qm9_cond_RL_multi --config.RL_type "multi" --config.new_train_set 10000 --config.cond_RL True --config.training.eval_batch_size 1000 --config.training.eval_samples 1000 --config.training.snapshot_freq 1000 --config.training.n_iters 480000
+CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_cond_RL_multi.py --mode train --workdir exp_cond_RL/vpsde_qm9_cond_RL_multi --config.RL_type "multi" --config.new_train_set 10000 --config.cond_RL True --config.training.eval_batch_size 1000 --config.training.eval_samples 1000 --config.training.snapshot_freq 1000 --config.training.n_iters 600000
 
 #sample
-CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_cond_RL_multi.py --mode eval --workdir exp_cond_RL/vpsde_qm9_cond_RL_multi --config.eval.ckpts 48000 --config.eval.batch_size 2500 --config.sampling.steps 1000
+CUDA_VISIBLE_DEVICES=0,1 python main.py --config configs/vpsde_qm9_cond_RL_multi.py --mode eval --workdir exp_cond_RL/vpsde_qm9_cond_RL_multi --config.eval.ckpts your_checkpoints --config.eval.batch_size 2500 --config.sampling.steps 1000
 ```
 
 ## Unconditional generation + Drug-likeness optimisation 
